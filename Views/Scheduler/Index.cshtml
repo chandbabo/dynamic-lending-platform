@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Scheduler";
+}
+
+<div class="card" style="max-width:700px; margin: 30px auto; padding: 24px;">
+    <h3 class="mb-4">Scheduled Reports</h3>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label class="form-label">Job Name</label>
+            <input type="text" name="jobName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Cron Expression</label>
+            <input type="text" name="cronExpression" class="form-control" value="0 9 * * *" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Job Type</label>
+            <select name="jobType" class="form-control">
+                <option value="DailyReport">Daily Report</option>
+                <option value="WeeklyReport">Weekly Report</option>
+                <option value="MonthlyReport">Monthly Report</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Schedule</button>
+    </form>
+</div>

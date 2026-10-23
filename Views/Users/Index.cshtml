@@ -1,0 +1,38 @@
+@model IEnumerable<LendingProcessingSystem.Models.UserProfile>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>User Management</h2>
+    <a asp-action="Create" class="btn btn-primary">Create User</a>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.FirstName @user.LastName</td>
+                    <td>@user.Phone</td>
+                    <td>
+                        <span class="badge @(user.IsActive ? "badge-success" : "badge-warning")">@(user.IsActive ? "Active" : "Inactive")</span>
+                    </td>
+                    <td>@user.CreatedAt.ToString("dd MMM yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

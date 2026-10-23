@@ -1,0 +1,31 @@
+@model System.Data.DataTable
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="card">
+    <h3 class="mb-4">Case Summary Report</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (System.Data.DataColumn col in Model.Columns)
+                {
+                    <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (System.Data.DataRow row in Model.Rows)
+            {
+                <tr>
+                    @foreach (var item in row.ItemArray)
+                    {
+                        <td>@item</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
